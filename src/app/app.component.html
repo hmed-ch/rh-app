@@ -1,0 +1,143 @@
+<ion-app [class.dark-theme]="dark">
+  <ion-split-pane contentId="main-content">
+
+    <ion-menu *ngIf="loggedIn" contentId="main-content">
+      <ion-content *ngIf="role == 'employe'">
+        <ion-list lines="none">
+          <ion-list-header>
+            Demandes
+          </ion-list-header>
+          <ion-menu-toggle autoHide="false" *ngFor="let p of appPages; let i = index">
+            <ion-item [routerLink]="p.url" routerLinkActive="selected" routerDirection="root" detail="false">
+              <ion-icon slot="start" [name]="p.icon + '-outline'"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+
+          </ion-menu-toggle>
+        </ion-list>
+
+        <ion-list lines="none">
+          <ion-list-header>
+            Consulter
+          </ion-list-header>
+
+          <ion-menu-toggle autoHide="false">
+            <ion-item routerLink="/" routerLinkActive="active" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="create-outline"></ion-icon>
+              <ion-label>
+                Fiche Personnelle
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle autoHide="false">
+            <ion-item routerLink="/fiche-paie" routerLinkActive="active" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="book-outline"></ion-icon>
+              <ion-label>
+                Fiche de Paie
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle autoHide="false">
+            <ion-item routerLink="/" routerLinkActive="active" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="reader-outline"></ion-icon>
+              <ion-label>
+                Solde de Congé
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle autoHide="false">
+            <ion-item routerLink="/signup" routerLinkActive="active" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="folder-outline"></ion-icon>
+              <ion-label>
+                Attestation Salaire
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle autoHide="false">
+            <ion-item routerLinkActive="active" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="person-add"></ion-icon>
+              <ion-label>
+                Notification
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+
+        <ion-list  lines="none">
+          <ion-list-header>
+            Account
+          </ion-list-header>
+          <ion-menu-toggle autoHide="false">
+            <ion-item routerLink="/login" routerLinkActive="active" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="log-out"></ion-icon>
+              <ion-label>Log out</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+
+      <ion-content *ngIf="role == 'rh'">
+        <!--ion-list lines="none">
+          <ion-list-header>
+            Demandes
+          </ion-list-header>
+          <ion-menu-toggle autoHide="false" *ngFor="let p of appPages.slice(1); let i = index">
+            <ion-item [routerLink]="p.url" routerLinkActive="selected" routerDirection="root" detail="false">
+              <ion-icon slot="start" [name]="p.icon + '-outline'"></ion-icon>
+              <ion-label>
+                Gestion {{p.title}}
+              </ion-label>
+            </ion-item>
+
+          </ion-menu-toggle>
+        </ion-list-->
+
+        <ion-list  lines="none">
+          <ion-list-header>
+            Consulter
+          </ion-list-header>
+
+          <ion-menu-toggle autoHide="false">
+          <ion-item routerLink="/demands" routerLinkActive="active" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="create-outline"></ion-icon>
+              <ion-label>
+                Liste des demandes
+              </ion-label>
+            </ion-item>
+            <ion-item routerLink="/list-employe" routerLinkActive="active" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="create-outline"></ion-icon>
+              <ion-label>
+                Liste des employés
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+      
+
+        <ion-list lines="none">
+          <ion-list-header>
+            Account
+          </ion-list-header>
+          <ion-menu-toggle autoHide="false">
+            <ion-item routerLink="/login" routerLinkActive="active" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="log-out"></ion-icon>
+              <ion-label>Log out</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+
+  </ion-split-pane>
+
+</ion-app>
